@@ -29,9 +29,6 @@
     <ClInclude Include="linkList.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="ListObject.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="Iterator.h">
       <Filter>Source Files</Filter>
     </ClInclude>

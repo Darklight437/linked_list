@@ -149,7 +149,6 @@
   <ItemGroup>
     <ClInclude Include="Iterator.h" />
     <ClInclude Include="linkList.h" />
-    <ClInclude Include="ListObject.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

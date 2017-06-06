@@ -63,14 +63,15 @@ public:
     }
 
    //return the iterator the the first element
-    void begin()
+    Iterator begin(Iterator iterator)
     {
         assert(m_first != nullptr && "linked list first node was null");
-        m_iterator.currentNode = m_first;
+        iterator.currentNode = m_first;
+        return iterator;
     }
 
    //move the iterator to the null element at the end
-    void end();//what??
+    Iterator end()
 
    //return the 1st element by value assert if no elements
     T first()
@@ -88,7 +89,17 @@ public:
     }
 
    //return total number of elements in the list
-    T count();
+    int count()
+    {
+        int counter;
+        Iterator temperator;
+        temperator.m_currentNode = begin(temperator);
+        while (temperator.m_currentNode->m_next != nullptr)
+        {
+            counter++;
+            temperator++;
+        }
+    }
 
    //remove an element by it's iterator
     void erase();
@@ -110,7 +121,10 @@ public:
     }
 
    //remove the last element
-    void popBack();
+    void popBack()
+    {
+        m_iterator.m_currentNode
+    }
 
    //remove the front object
     void popFront();
