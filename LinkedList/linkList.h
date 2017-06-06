@@ -1,5 +1,5 @@
 #pragma once
-#include "ListObject.h"
+
 #include "Iterator.h"
 #include <assert.h>
 template <class T>
@@ -93,8 +93,21 @@ public:
    //remove an element by it's iterator
     void erase();
 
-   //remove all elements with a certain valuem,
-    void remove(T value);
+   //remove all elements with a certain value
+    void remove(T value)
+    {
+        m_iterator.m_currentNode = begin();
+
+        for (int i = 0; i < count(); i++)
+        {
+            if (m_iterator.m_currentNode->m_value == value)
+            {
+                erase();
+
+            }
+            m_iterator++;
+        }
+    }
 
    //remove the last element
     void popBack();
@@ -107,6 +120,26 @@ public:
 
    //remove all elements from the list
     void clear();
+
+
+
+    private:
+        class ListObject
+        {
+        public:
+
+
+
+            T m_value;
+            ListObject* m_next;
+            ListObject* m_previous;
+
+
+            ListObject();
+            ~ListObject();
+
+        protected:         
+        };
 
 
 
