@@ -20,6 +20,13 @@ public:
     Iterator m_iterator;
 
 
+/////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
+//
+// FUNCTIONS
+//
+/////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
 
     // add new value to the front the list
     void pushFront(T value)
@@ -57,7 +64,7 @@ public:
     }
 
    //add new value one past the specified iterator location
-    void insert(T value)
+    void insert(T value, Iterator)
     {
 
     }
@@ -102,7 +109,10 @@ public:
     }
 
    //remove an element by it's iterator
-    void erase();
+    void erase(Iterator currentElement)
+    {
+        //afhwoohey
+    }
 
    //remove all elements with a certain value
     void remove(T value)
