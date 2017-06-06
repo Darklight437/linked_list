@@ -143,7 +143,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Iterator.cpp" />
-    <ClCompile Include="linkList.cpp" />
     <ClCompile Include="ListObject.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
