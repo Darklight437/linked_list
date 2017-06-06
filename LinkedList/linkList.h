@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Iterator.h"
+
 #include <assert.h>
 template <class T>
 
@@ -64,9 +64,9 @@ public:
     }
 
    //add new value one past the specified iterator location
-    void insert(T value, Iterator)
+    void insert(T value, Iterator currentpos)
     {
-
+        assert(currentpos.)
     }
 
    //return the iterator the the first element
@@ -144,8 +144,13 @@ public:
 
    //remove all elements from the list
     void clear();
-
-
+/////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
+//
+//    SUB-CLASSES
+// 
+/////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
 
     private:
         class ListObject
@@ -159,12 +164,27 @@ public:
             ListObject* m_previous;
 
 
-            ListObject();
-            ~ListObject();
+            ListObject() {};
+            ~ListObject() {};
 
         protected:         
         };
 
+        class Iterator
+        {
+        public:
+
+            Iterator() {};
+            ~Iterator() {};
+            ListObject* m_currentNode;
+
+            ListObject operator ++()
+            {
+                m_currentNode = m_currentNode->m_next;
+            }
+
+
+        };
 
 
 
