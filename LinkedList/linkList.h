@@ -191,7 +191,11 @@ public:
    //remove an element by it's iterator
     void erase(Iterator currentElement)
     {
-        //afhwoohey
+        //get the pointers that refer to the element to be deleted
+        //delete the element in question
+        //decrement the counter
+        //move the iterator to the next right(if possible) (else left)
+        //if neither then explode
     }
 
 
