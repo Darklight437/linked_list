@@ -1,14 +1,14 @@
 #pragma once
 #include <assert.h>
-class Iterator;
-class ListObject;
 
 
 
-template <class T>
+
+template <typename T>
 class LinkList
 {
-
+    class Iterator;
+    class ListObject;
 
 
 /////////////////////////////////////////////////////////////////////////
@@ -25,13 +25,13 @@ public:
 
 
 
-    linkList()
+    LinkList()
     {
         m_first = nullptr;
         m_last = nullptr;
     }
 
-    ~linkList() {};
+    ~LinkList() {};
 
     ListObject* m_first;
     ListObject* m_last;
@@ -107,6 +107,8 @@ public:
         newNode = new ListObject;
 
         newNode->m_value = value;
+        m_numOfNodes++;
+
 
         newNode->m_previous = oldNode;
         oldNode->m_next = newNode;
@@ -126,6 +128,7 @@ public:
         newNode = new ListObject;
 
         newNode->m_value = value;
+        m_numOfNodes++;
 
         newNode->m_next = oldNode;
         oldNode->m_previous = newNode;
@@ -175,6 +178,9 @@ public:
     {
         //afhwoohey
     }
+
+
+
 
    //remove all elements with a certain value
     void remove(T value)
