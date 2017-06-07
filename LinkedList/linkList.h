@@ -4,7 +4,7 @@
 
 
 
-template <typename T>
+template <class T>
 class LinkList
 {
     class Iterator;
