@@ -1,24 +1,93 @@
 #pragma once
-
-
 #include <assert.h>
-template <class T>
+class Iterator;
+class ListObject;
 
-class linkList
+
+
+template <class T>
+class LinkList
 {
+
+
+
+/////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
+//
+//    MAIN-CLASS
+// 
+/////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
+
+
+
 public:
+
+
+
     linkList()
     {
         m_first = nullptr;
-        m_last = nullptr;        
+        m_last = nullptr;
     }
 
     ~linkList() {};
 
     ListObject* m_first;
     ListObject* m_last;
-    Iterator m_iterator;
+    int m_numOfNodes;
 
+
+
+
+/////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
+//
+//    SUB-CLASSES
+// 
+/////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
+
+
+    class Iterator
+    {
+    public:
+
+        Iterator() {};
+        ~Iterator() {};
+        ListObject* m_currentNode;
+
+        void operator ++()
+        {
+            m_currentNode = m_currentNode->m_next;
+        }
+
+        void operator ++(int)
+        {
+            m_currentNode = m_currentNode->m_next;
+        }
+
+    };
+
+
+private:
+    class ListObject
+    {
+    public:
+
+
+
+        T m_value;
+        ListObject* m_next;
+        ListObject* m_previous;
+
+
+        ListObject() {};
+        ~ListObject() {};
+
+
+    };
+public:
 
 /////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////
@@ -64,9 +133,9 @@ public:
     }
 
    //add new value one past the specified iterator location
-    void insert(T value, Iterator currentpos)
+    void insert(T value, Iterator iterator)
     {
-        assert(currentpos.)
+      //  iterator.
     }
 
    //return the iterator the the first element
@@ -78,7 +147,7 @@ public:
     }
 
    //move the iterator to the null element at the end
-    Iterator end()
+    Iterator end() {}
 
    //return the 1st element by value assert if no elements
     T first()
@@ -98,14 +167,7 @@ public:
    //return total number of elements in the list
     int count()
     {
-        int counter;
-        Iterator temperator;
-        temperator.m_currentNode = begin(temperator);
-        while (temperator.m_currentNode->m_next != nullptr)
-        {
-            counter++;
-            temperator++;
-        }
+        return m_numOfNodes;
     }
 
    //remove an element by it's iterator
@@ -133,61 +195,17 @@ public:
    //remove the last element
     void popBack()
     {
-        m_iterator.m_currentNode
+        
     }
 
    //remove the front object
-    void popFront();
+    void popFront() {}
 
    //return true if list is empty false if not
-    bool empty();
+    bool empty() {}
 
    //remove all elements from the list
-    void clear();
-/////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////
-//
-//    SUB-CLASSES
-// 
-/////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////
-
-    private:
-        class ListObject
-        {
-        public:
-
-
-
-            T m_value;
-            ListObject* m_next;
-            ListObject* m_previous;
-
-
-            ListObject() {};
-            ~ListObject() {};
-
-        protected:         
-        };
-
-        class Iterator
-        {
-        public:
-
-            Iterator() {};
-            ~Iterator() {};
-            ListObject* m_currentNode;
-
-            ListObject operator ++()
-            {
-                m_currentNode = m_currentNode->m_next;
-            }
-
-
-        };
-
-
-
+    void clear() {}
 
 
 };
