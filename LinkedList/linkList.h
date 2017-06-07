@@ -138,7 +138,21 @@ public:
    //add new value one past the specified iterator location
     void insert(T value, Iterator iterator)
     {
-      //  iterator.
+        ListObject* rightSide;
+        ListObject* leftSide;
+        ListObject* newNode;
+        rightSide = iterator.m_currentNode->m_previous;
+        leftSide = iterator.m_currentNode;
+        
+        newNode = new ListObject;
+        newNode->m_value = value;
+        m_numOfNodes++;
+        newNode->m_previous = rightSide;
+        newNode->m_next = leftSide;
+        rightSide->m_next = newNode;
+        leftSide->m_previous = newNode;
+
+
     }
 
    //return the iterator the the first element
@@ -150,6 +164,7 @@ public:
     }
 
    //move the iterator to the null element at the end
+    //how do you specify the end null?
     Iterator end() {}
 
    //return the 1st element by value assert if no elements
