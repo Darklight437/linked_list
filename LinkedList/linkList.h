@@ -216,7 +216,8 @@ public:
    //remove the last element
     void popBack()
     {
-        
+		//ListObject* nextInLine = m_last->m_next;
+		//delete m_last;
     }
 
    //remove the front object
