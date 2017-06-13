@@ -66,6 +66,10 @@ public:
         {
             m_currentNode = m_currentNode->m_next;
         }
+        void operator --()
+        {
+            m_currentNode = m_currentNode->m_previous;
+        }
 
     };
 
@@ -212,12 +216,7 @@ public:
             currentElement.m_currentNode = nullptr;
             assert(currentElement.m_currentNode != nullptr && "the iterator could not find a related node to either side of the deleted node");
         }
-        //get the pointers that refer to the element to be deleted// 
-        //delete the element in question//
-        //decrement the counter//
-        //re-tie pointers
-        //move the iterator to the next right(if possible) (else left)
-        //if neither then explode
+        
     }
 
 
