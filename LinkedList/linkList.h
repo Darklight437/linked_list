@@ -114,6 +114,10 @@ public:
         newNode->m_previous = oldNode;
         oldNode->m_next = newNode;
         m_first = newNode;
+        if (m_last = nullptr)
+        {
+            m_last = newNode;
+        }
     }
 
    //add new value to the end of the list
@@ -131,6 +135,10 @@ public:
         newNode->m_next = oldNode;
         oldNode->m_previous = newNode;
         m_last = newNode;
+        if (m_first = nullptr)
+        {
+            m_first = newNode;
+        }
     }
 
    //add new value one past the specified iterator location
@@ -149,7 +157,6 @@ public:
         newNode->m_next = leftSide;
         rightSide->m_next = newNode;
         leftSide->m_previous = newNode;
-
 
     }
 
