@@ -274,9 +274,19 @@ public:
     }
 
    //remove all elements from the list
-    void clear()
+    void clear(Iterator frontOfList)
     {
-        //while there are listelements left iterate through them and delete them
+        begin(frontOfList);
+        while (frontOfList.m_currentNode != nullptr)
+        {
+            ListObject* deletThis = frontOfList.m_currentNode;
+            frontOfList++;
+            delete deletThis;
+            
+        }
+        //set number of nodes to 0
+        delete frontOfList.m_currentNode;
+        
     }
 
 
