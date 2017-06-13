@@ -66,10 +66,7 @@ public:
         {
             m_currentNode = m_currentNode->m_next;
         }
-        void operator --()
-        {
-            m_currentNode = m_currentNode->m_previous;
-        }
+
 
     };
 
@@ -119,9 +116,6 @@ public:
         m_first = newNode;
     }
 
-
-
-
    //add new value to the end of the list
     void pushBack(T value)
     {
@@ -169,7 +163,10 @@ public:
 
    //move the iterator to the null element at the end
     //how do you specify the end null?
-    Iterator end() {}
+    Iterator end(Iterator iterator)
+    {
+        iterator.m_currentNode = nullptr;
+    }
 
    //return the 1st element by value assert if no elements
     T first()
@@ -219,9 +216,6 @@ public:
         
     }
 
-
-
-
    //remove all elements with a certain value
     void remove(T value, Iterator iter)
     {
@@ -243,18 +237,29 @@ public:
     {
         //get the end value
         //grab the previous
-		//ListObject* nextInLine = m_last->m_next;
-		//delete m_last;
+		ListObject* nextInLine = m_last->m_previous;
+		delete m_last;
+        m_numOfNodes--;
+        m_last = nextInLine;
     }
 
    //remove the front object
-    void popFront() {}
+    void popFront()
+    {
+        ListObject* nextInLine = m_first->m_next;
+        delete m_first;
+        m_numOfNodes--;
+        m_first = nextInLine;
+    }
 
    //return true if list is empty false if not
     bool empty() {}
 
    //remove all elements from the list
-    void clear() {}
+    void clear()
+    {
+        //while there are listelements left iterate through them and delete them
+    }
 
 
 };
