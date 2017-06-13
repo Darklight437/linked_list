@@ -191,9 +191,31 @@ public:
    //remove an element by it's iterator
     void erase(Iterator currentElement)
     {
-        //get the pointers that refer to the element to be deleted
-        //delete the element in question
-        //decrement the counter
+        ListObject* rightOf;
+        ListObject* leftOf;
+        rightOf = currentElement.m_currentNode->m_next;
+        leftOf = currentElement.m_currentNode->m_previous;
+        delete currentElement.m_currentNode;
+        m_numOfNodes--;
+        rightOf->m_previous = leftOf;
+        leftOf->m_next = rightOf;
+        if (rightOf != nullptr)
+        {
+            currentElement.m_currentNode = rightOf;
+        }
+        else if (leftOf != nullptr)
+        {
+            currentElement.m_currentNode = leftOf;
+        }
+        else
+        {
+            currentElement.m_currentNode = nullptr;
+            assert(currentElement.m_currentNode != nullptr && "the iterator could not find a related node to either side of the deleted node");
+        }
+        //get the pointers that refer to the element to be deleted// 
+        //delete the element in question//
+        //decrement the counter//
+        //re-tie pointers
         //move the iterator to the next right(if possible) (else left)
         //if neither then explode
     }
@@ -202,9 +224,9 @@ public:
 
 
    //remove all elements with a certain value
-    void remove(T value)
+    void remove(T value, Iterator iter)
     {
-        m_iterator.m_currentNode = begin();
+        iter.m_currentNode = begin();
 
         for (int i = 0; i < count(); i++)
         {
@@ -220,6 +242,8 @@ public:
    //remove the last element
     void popBack()
     {
+        //get the end value
+        //grab the previous
 		//ListObject* nextInLine = m_last->m_next;
 		//delete m_last;
     }

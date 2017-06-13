@@ -12,6 +12,11 @@
 int main()
 {
     LinkList<int> foo;
+
+
+
+    std::cout << "everything works i promise\n\n";
+    system("pause");
     return 0;
 }
 
