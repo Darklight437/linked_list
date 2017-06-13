@@ -253,7 +253,18 @@ public:
     }
 
    //return true if list is empty false if not
-    bool empty() {}
+    bool empty()
+    {
+        //check if first has something
+        if (m_first != nullptr)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
    //remove all elements from the list
     void clear()
