@@ -221,8 +221,15 @@ public:
         leftOf = currentElement.m_currentNode->m_previous;
         delete currentElement.m_currentNode;
         m_numOfNodes--;
-        rightOf->m_previous = leftOf;
-        leftOf->m_next = rightOf;
+        if (rightOf != nullptr)
+        {
+            rightOf->m_previous = leftOf;
+        }
+        if (leftOf != nullptr)
+        {
+            leftOf->m_next = rightOf;
+        }
+       
         if (rightOf != nullptr)
         {
             currentElement.m_currentNode = rightOf;
@@ -264,6 +271,7 @@ public:
 		delete m_last;
         m_numOfNodes--;
         m_last = nextInLine;
+        m_last->m_previous = nullptr;
     }
 
    //remove the front object
@@ -273,13 +281,14 @@ public:
         delete m_first;
         m_numOfNodes--;
         m_first = nextInLine;
+        m_first->m_next = nullptr;
     }
 
    //return true if list is empty false if not
     bool empty()
     {
         //check if first has something
-        if (m_first != nullptr)
+        if (m_first == nullptr)
         {
             return true;
         }
@@ -297,11 +306,11 @@ public:
         {
             ListObject* deletThis = frontOfList.m_currentNode;
             frontOfList++;
-            delete deletThis;
+            erase(frontOfList);
             
         }
         //set number of nodes to 0
-        delete frontOfList.m_currentNode;
+       
         
     }
 

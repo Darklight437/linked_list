@@ -37,6 +37,13 @@ int main()
 
     foo.popFront();
 
+
+    if (foo.empty() == false)
+    {
+        foo.clear(bar);
+    }
+
+    
     std::cout << "everything works i promise\n\n";
     system("pause");
     return 0;
