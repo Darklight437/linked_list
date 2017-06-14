@@ -212,11 +212,14 @@ public:
         return m_numOfNodes;
     }
 
+
+
    //remove an element by it's iterator
     void erase(Iterator currentElement)
     {
         ListObject* rightOf;
         ListObject* leftOf;
+
         rightOf = currentElement.m_currentNode->m_next;
         leftOf = currentElement.m_currentNode->m_previous;
         delete currentElement.m_currentNode;
@@ -306,11 +309,14 @@ public:
         {
             ListObject* deletThis = frontOfList.m_currentNode;
             frontOfList++;
-            erase(frontOfList);
+            delete deletThis;
+            
             
         }
         //set number of nodes to 0
-       
+        m_numOfNodes = 0;
+        m_first = nullptr;
+        m_last = nullptr;
         
     }
 
