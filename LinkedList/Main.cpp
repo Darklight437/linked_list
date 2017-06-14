@@ -35,6 +35,7 @@ int main()
 
     foo.popBack();
 
+    foo.popFront();
 
     std::cout << "everything works i promise\n\n";
     system("pause");
