@@ -7,8 +7,6 @@
 template <class T>
 class LinkList
 {
-    class Iterator;
-    class ListObject;
 
 
 /////////////////////////////////////////////////////////////////////////
@@ -19,9 +17,11 @@ class LinkList
 /////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////
 
-
+    class ListObject;
 
 public:
+    class Iterator;
+
 
 
 
@@ -35,7 +35,7 @@ public:
 
     ListObject* m_first;
     ListObject* m_last;
-    int m_numOfNodes;
+    int m_numOfNodes = 0;
 
 
 
@@ -59,12 +59,12 @@ public:
 
         void operator ++()
         {
-            m_currentNode = m_currentNode->m_next;
+            m_currentNode = m_currentNode->m_previous;
         }
 
         void operator ++(int)
         {
-            m_currentNode = m_currentNode->m_next;
+            m_currentNode = m_currentNode->m_previous;
         }
 
 
@@ -83,7 +83,11 @@ private:
         ListObject* m_previous;
 
 
-        ListObject() {};
+        ListObject()
+        {
+            m_next = nullptr;
+            m_previous = nullptr;
+        };
         ~ListObject() {};
 
 
@@ -112,9 +116,13 @@ public:
 
 
         newNode->m_previous = oldNode;
-        oldNode->m_next = newNode;
+        if (oldNode != nullptr)
+        {
+            oldNode->m_next = newNode;
+        }
+        
         m_first = newNode;
-        if (m_last = nullptr)
+        if (m_last == nullptr)
         {
             m_last = newNode;
         }
@@ -133,9 +141,13 @@ public:
         m_numOfNodes++;
 
         newNode->m_next = oldNode;
-        oldNode->m_previous = newNode;
+        if (oldNode != nullptr)
+        {
+            oldNode->m_previous = newNode;
+        }
+       
         m_last = newNode;
-        if (m_first = nullptr)
+        if (m_first == nullptr)
         {
             m_first = newNode;
         }
@@ -153,10 +165,15 @@ public:
         newNode = new ListObject;
         newNode->m_value = value;
         m_numOfNodes++;
+
         newNode->m_previous = rightSide;
         newNode->m_next = leftSide;
-        rightSide->m_next = newNode;
-        leftSide->m_previous = newNode;
+
+        //ternary operators
+        (rightSide == nullptr) ? (m_last = newNode) : (rightSide->m_next = newNode);
+
+        (leftSide == nullptr) ? (m_first = newNode) : (leftSide->m_previous = newNode);
+        
 
     }
 
@@ -164,12 +181,11 @@ public:
     Iterator begin(Iterator iterator)
     {
         assert(m_first != nullptr && "linked list first node was null");
-        iterator.currentNode = m_first;
+        iterator.m_currentNode = m_first;
         return iterator;
     }
 
-   //move the iterator to the null element at the end
-    //how do you specify the end null?
+   //move the iterator to the null element "at the end"
     Iterator end(Iterator iterator)
     {
         iterator.m_currentNode = nullptr;
@@ -244,7 +260,7 @@ public:
     {
         //get the end value
         //grab the previous
-		ListObject* nextInLine = m_last->m_previous;
+		ListObject* nextInLine = m_last->m_next;
 		delete m_last;
         m_numOfNodes--;
         m_last = nextInLine;
@@ -253,7 +269,7 @@ public:
    //remove the front object
     void popFront()
     {
-        ListObject* nextInLine = m_first->m_next;
+        ListObject* nextInLine = m_first->m_previous;
         delete m_first;
         m_numOfNodes--;
         m_first = nextInLine;
