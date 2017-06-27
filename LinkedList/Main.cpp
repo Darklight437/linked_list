@@ -60,10 +60,19 @@ int main()
         foo.clear(bar);
     }
 
-    
-    std::cout << "everything works i promise\n\n";
-    system("pause");
-    return 0;
+    if (testPassed)
+    {
+        std::cout << "everything works i promise\n\n";
+        system("pause");
+        return 0;
+    }
+    else
+    {
+        std::cout << "system failed tests\n\n";
+        system("pause");
+        return 0;
+    }
+   
 }
 
 
