@@ -15,6 +15,7 @@ int main()
 
     LinkList<int>::Iterator bar;
     
+    bool testPassed = true;
     //WAI
     foo.pushFront(32);
 
@@ -22,7 +23,15 @@ int main()
     foo.pushBack(1);
     foo.pushBack(77);
 
-
+    if (foo.first() == 32 && foo.last() == 77)
+    {
+        std::cout << "pushfront & back working as intended";
+    }
+    else
+    {
+        std::cout << "push functions failed";
+        testPassed = false;
+    }
     //good
     bar = foo.begin(bar);
     bar.m_currentNode->m_value;
@@ -30,8 +39,16 @@ int main()
     bar++;
     foo.insert(25, bar);
 
+    if (bar.m_currentNode->m_value == 25)
+    {
+        std::cout << "iterator insertion working as intended";
+    }
+    else
+    {
+        testPassed = false;
+    }
     //good
-    foo.first();
+  
 
     foo.popBack();
 
